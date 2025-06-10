@@ -22,8 +22,12 @@ public class Persona003BZ {
 	private PersonaFisicaRepository personaFisicaRepository;
 	
 	private String NO_SE_ENCONTRO_PERSONA = "No se encontro a la persona";
+	
+    public Persona003BZ(PersonaFisicaRepository personaFisicaRepository) {
+		this.personaFisicaRepository = personaFisicaRepository;
+	}
 
-    public ResponseEntity<RSB012> obtenerFisicaNombre(final RQSV018 rqsv018) {
+	public ResponseEntity<RSB012> obtenerFisicaNombre(final RQSV018 rqsv018) {
         RSB012 rsb012 = rqsv018.getRsb012();
         Sesion sesion = rqsv018.getSesion();
 
