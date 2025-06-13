@@ -19,15 +19,40 @@ import com.tecabix.sv.rq.RQSV018;
  */
 public class Persona003BZ {
 
-	private PersonaFisicaRepository personaFisicaRepository;
-	
-	private String NO_SE_ENCONTRO_PERSONA = "No se encontro a la persona";
-	
-    public Persona003BZ(PersonaFisicaRepository personaFisicaRepository) {
-		this.personaFisicaRepository = personaFisicaRepository;
-	}
+    /**
+     * Repositorio para acceder a la entidad PersonaFisica.
+     */
+    private final PersonaFisicaRepository personaFisicaRepository;
 
-	public ResponseEntity<RSB012> obtenerFisicaNombre(final RQSV018 rqsv018) {
+    /**
+     * Persona fisica no encontrada.
+     */
+    private static final String NO_SE_ENCONTRO_PERSONA;
+
+    static {
+
+        NO_SE_ENCONTRO_PERSONA = "No se encontro a la persona";
+    }
+
+    /**
+     * Constructor de la clase Persona003BZ.
+     *
+     * @param repository Repositorio utilizado para acceder a los datos de
+     *                   personas físicas.
+     */
+    public Persona003BZ(final PersonaFisicaRepository repository) {
+        this.personaFisicaRepository = repository;
+    }
+
+    /**
+     * Obtiene el nombre de la persona física asociada al identificador
+     * proporcionado.
+     *
+     * @param rqsv018 petición con parámetros para obtener el nombre
+     * @return {@link ResponseEntity} con un objeto {@link RSB012} que contiene
+     *         el nombre de la persona o entidad física.
+     */
+    public ResponseEntity<RSB012> obtenerFisicaNombre(final RQSV018 rqsv018) {
         RSB012 rsb012 = rqsv018.getRsb012();
         Sesion sesion = rqsv018.getSesion();
 
