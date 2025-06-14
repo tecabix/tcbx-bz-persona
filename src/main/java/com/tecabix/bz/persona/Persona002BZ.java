@@ -12,7 +12,13 @@ import com.tecabix.sv.rq.RQSV017;
  */
 public class Persona002BZ {
 
-	public ResponseEntity<RSB013> obtenerTelefono(final RQSV017 rqsv017) {
+    /**
+     * Obtiene el número de teléfono de la persona.
+     *
+     * @param rqsv017 petición con parámetros para obtener el teléfono
+     * @return ResponseEntity con RSB013 que contiene el teléfono
+     */
+    public ResponseEntity<RSB013> obtenerTelefono(final RQSV017 rqsv017) {
         RSB013 rsb013 = rqsv017.getRsb013();
         Sesion sesion = rqsv017.getSesion();
         return rsb013.ok(sesion.getUsuario());

@@ -18,16 +18,40 @@ import com.tecabix.sv.rq.RQSV016;
  * @author Ramirez Urrutia Angel Abinadi
  */
 public class Persona001BZ {
-	
-	private PersonaFisicaRepository personaFisicaRepository;
-	
-	private String NO_SE_ENCONTRO_PERSONA = "No se encontro a la persona";
-	
-	public Persona001BZ(PersonaFisicaRepository personaFisicaRepository) {
-		this.personaFisicaRepository = personaFisicaRepository;
-	}
 
-	public ResponseEntity<RSB011> obtenerDireccion(final RQSV016 rqsv016) {
+    /**
+     * Repositorio para acceder a la entidad PersonaFisica.
+     */
+    private final PersonaFisicaRepository personaFisicaRepository;
+
+    /**
+     * Persona fisica no encontrada.
+     */
+    private static final String NO_SE_ENCONTRO_PERSONA;
+
+    static {
+
+        NO_SE_ENCONTRO_PERSONA = "No se encontro a la persona";
+    }
+
+    /**
+     * Constructor de la clase Persona001BZ.
+     *
+     * @param respository Repositorio utilizado para acceder a
+     *                                los datos de personas físicas.
+     */
+    public Persona001BZ(final PersonaFisicaRepository respository) {
+        this.personaFisicaRepository = respository;
+    }
+
+    /**
+     * Obtiene la dirección asociada al identificador proporcionado.
+     *
+     * @param rqsv016 petición con parámetros para obtener la dirección
+     * @return {@link ResponseEntity} con un objeto {@link RSB011} que contiene
+     *         información de dirección.
+     */
+    public ResponseEntity<RSB011> obtenerDireccion(final RQSV016 rqsv016) {
 
         RSB011 rsb011 = rqsv016.getRsb011();
         Sesion sesion = rqsv016.getSesion();
